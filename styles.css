@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+* {
+    margin: 0 0;
+    box-sizing: border-box;
+
+}
+
+body { 
+    background-color: blue;
+    width: auto;
+    height: auto;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    /* background-color: blue; */
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 2.5% 0;
+}
+
+.section {
+    display: block;
+    width: 500px;
+    /* background-color: brown; */
+}
+
+h1 {
+    font-size: 4rem;
+    text-align: center;
+    background-color: cornflowerblue;
+}
+
+ul {
+    width: 100%;
+    height: fit-content;
+    background-color: cornflowerblue;
+    padding: 5%;
+}
+
+li {
+    max-width: 100%;
+    border-bottom: cornsilk solid 0.5px;
+    padding: 4%;
+}
+
+form {
+    background-color:cornflowerblue;
+    font-size: 2em;
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+}
+
+input , textarea {
+    width: 100%;
+}
+
+textarea {
+    resize: none;
+}
+
+.btn-submit {
+    border-style: none;
+    background-color:blue;
+    color: cornsilk;
+    cursor: pointer;
+    border-radius: 10px;
+    transition-duration: 0.4s;
+
+    width: 100%;
+    padding: 15px auto;
+    font-size: 1.5rem;
+
+}
+
+.btn-submit:hover {
+    background-color:cornsilk;
+    color: blue;
+    border : solid blue 1px;
+}
+

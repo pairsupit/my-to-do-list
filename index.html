@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my-to-do-list</title>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+    <div class="container">
+
+
+        <!-- This is my header -->
+        <div class="section">
+            <h1>My to do list</h1>
+        </div>
+
+        <!-- show to do list item here -->
+        <div class="section">
+            <ul id="toDoList">
+
+            </ul>
+        </div>
+
+        <!-- add to do list item here -->
+        <div class="section">
+            <form>
+                <div class="item">
+                    <label for="title">Title: </label><br>
+                    <input type="text" id="title" name="title" placeholder="Enter title" autofocus><br>
+                </div>
+
+                <div class="item">
+                    <label for="description">Description: </label><br>
+                    <textarea type="text" id="description" name="desription" placeholder="Enter description" rows="5">
+                    </textarea>
+                </div>
+
+                <div class="item">
+                    <!-- <input type="submit" class="btn-submit"> -->
+                    <button type="submit" class="btn-submit">submit</button>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
