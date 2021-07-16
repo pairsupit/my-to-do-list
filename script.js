@@ -11,11 +11,10 @@ submitBtn[0].addEventListener('click', function(e){
     if( txt.trim().length ){
         console.log('text is longer than 1')
         toDoListTxt.innerHTML += '<li><div class="front-section"><h2><u>'+ txt 
-                            +'</u></h2>'+ areaTxt.value.trim()+'</div><div class="back-section">'
+                            +'</u></h2>'+ areaTxt.value.trim()+'</div><div class="back-section"><p><i class="far fa-trash-alt"></i></p>'
                             +'</div></li>';
         
         reset();
-
         
     }else{
         alert("Please enter title and description !");

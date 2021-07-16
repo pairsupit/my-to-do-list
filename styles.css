@@ -3,7 +3,6 @@
 * {
     margin: 0 0;
     box-sizing: border-box;
-
 }
 
 body { 
@@ -50,6 +49,21 @@ li {
     max-width: 100%;
     border-bottom: cornsilk solid 0.5px;
     padding: 4%;
+    display: flex;
+    flex-direction: row;
+}
+
+.front-section {
+    display: block;
+    width: 75%;
+    background-color: brown;
+}
+
+.back-section {
+    display: block;
+    width: 25%;
+    background-color: burlywood;
+    text-align: center;
 }
 
 form {
