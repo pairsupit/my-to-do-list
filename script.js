@@ -25,3 +25,7 @@ function reset(){
     titleTxt.value = '';
     areaTxt.value = '';
 }
+
+fetch(`http://localhost:3000/select`)
+    .then((response) => console.log(response.json))
+    .then((data) => console.log(data));
