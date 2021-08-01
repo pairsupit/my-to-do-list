@@ -26,6 +26,24 @@ function reset(){
     areaTxt.value = '';
 }
 
-fetch(`http://localhost:3000/select`)
-    .then((response) => console.log(response.json))
-    .then((data) => console.log(data));
+fetch(`http://localhost:3000/`,{
+    method: "GET",
+    headers: {"Content-type": "application/json;charset=UTF-8"}
+    })
+    .then((response) => response.json())
+    .then((data) => {
+        console.log(data.length);
+        // console.log(`${data[0].title} ${data[0].description}`);
+    
+        for(let i=0 ; i<data.length ; i++ ){
+            toDoListTxt.innerHTML += `<li>
+                                        <div class="front-section">
+                                            <h2><u>${data[0].title}</u></h2>
+                                            ${data[0].description}
+                                        </div>
+                                        <div class="back-section">
+                                            <i class="far fa-trash-alt"></i>
+                                        </div>
+                                    </li>`;
+        }
+    });
