@@ -43,8 +43,3 @@ const port = 3000;
 app.listen(port, () => {
     console.log(`We are on port ${port}!`);
 });
-
-//log error
-db.on('error', function(err) {
-    console.log("[mysql error]",err);
-  });
