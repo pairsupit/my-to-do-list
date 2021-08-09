@@ -61,14 +61,16 @@ fetch(`http://localhost:3000/`,{
     
         for(let i=0 ; i < data.length ; i++ ){
             list.innerHTML+=`<li>
-                                        <div class="front-section">
-                                            <h2><u>${data[i].title}</u></h2>
-                                            ${data[i].description}
-                                        </div>
+                                <div class="front-section">
+                                    <h2>
+                                        <u>${data[i].title}</u>
+                                    </h2>
+                                        ${data[i].description}
+                                </div>
                                         
-                                        <i class="far fa-trash-alt delete"></i>
+                                <i class="far fa-trash-alt delete"></i>
                                         
-                                    </li>`;
+                            </li>`;
         };
     })
     .catch((error) => {
@@ -77,8 +79,8 @@ fetch(`http://localhost:3000/`,{
 
 list.addEventListener('click', function(e){
     if(e.target.classList.contains('delete')){
-        // e.target.parentElement.remove();
-        fetch(`http://localhost:3000/delete`, { 
+        let checkTitle = e.target.parentElement.children[0].children[0].children[0].innerHTML;
+        fetch(`http://localhost:3000/delete/${checkTitle}`, { 
             method: "DELETE"
         }).then((response) => {
             response.json()
