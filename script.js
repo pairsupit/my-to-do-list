@@ -1,18 +1,37 @@
 const submitBtn = document.getElementsByClassName('btn-submit');
 const titleTxt = document.getElementById('title');
 const areaTxt = document.getElementById('description');
-const toDoListTxt = document.getElementById('toDoList');
+const list = document.getElementById('toDoList');
+const deleteBut = document.getElementsByClassName('back-section');
 
+/*
+    add form title / description to to do list
+*/
 submitBtn[0].addEventListener('click', function(e){
     e.preventDefault();
-    console.log(titleTxt.value);
-    let txt = titleTxt.value;
+    let titleStr = titleTxt.value;
+    let descriptionStr = areaTxt.value;
 
-    if( txt.trim().length ){
+    /* if title longer than 0 , add to-do-list */
+    if( titleStr.trim().length ){
         console.log('text is longer than 1')
-        toDoListTxt.innerHTML += '<li><div class="front-section"><h2><u>'+ txt 
-                            +'</u></h2>'+ areaTxt.value.trim()+'</div><div class="back-section"><p><i class="far fa-trash-alt"></i></p>'
-                            +'</div></li>';
+
+        let data = { title : "this is title", description : "this is description" }
+        
+        fetch(`http://localhost:3000/insert/`,{
+            method: "POST",
+            headers: {"Content-type": "application/json;charset=UTF-8"},
+            body: JSON.stringify(data)
+        })
+            .then((response) => {
+                response.json()
+            })
+            .then((data) => {
+                console.log(data);
+            })
+            .catch((error) =>
+                console.log('Error:', error)
+            );
         
         reset();
         
@@ -22,28 +41,53 @@ submitBtn[0].addEventListener('click', function(e){
 });
 
 function reset(){
-    titleTxt.value = '';
-    areaTxt.value = '';
+    titleTxt.value = ``;
+    areaTxt.value = ``;
 }
 
+/*
+    showing to do list
+*/
 fetch(`http://localhost:3000/`,{
     method: "GET",
     headers: {"Content-type": "application/json;charset=UTF-8"}
     })
-    .then((response) => response.json())
+    .then((response) =>
+        response.json()
+    )
     .then((data) => {
-        console.log(data.length);
+        // console.log(data.length);
         // console.log(`${data[0].title} ${data[0].description}`);
     
-        for(let i=0 ; i<data.length ; i++ ){
-            toDoListTxt.innerHTML += `<li>
+        for(let i=0 ; i < data.length ; i++ ){
+            list.innerHTML+=`<li>
                                         <div class="front-section">
-                                            <h2><u>${data[0].title}</u></h2>
-                                            ${data[0].description}
+                                            <h2><u>${data[i].title}</u></h2>
+                                            ${data[i].description}
                                         </div>
-                                        <div class="back-section">
-                                            <i class="far fa-trash-alt"></i>
-                                        </div>
+                                        
+                                        <i class="far fa-trash-alt delete"></i>
+                                        
                                     </li>`;
-        }
+        };
+    })
+    .catch((error) => {
+        console.log(`Error: ${error}`);
     });
+
+list.addEventListener('click', function(e){
+    if(e.target.classList.contains('delete')){
+        // e.target.parentElement.remove();
+        fetch(`http://localhost:3000/delete`, { 
+            method: "DELETE"
+        }).then((response) => {
+            response.json()
+        })
+        .then((data) => {
+            console.log(data);
+        })
+        .catch((error) =>
+            console.log('Error:', error)
+        );
+    }
+});
