@@ -52,11 +52,11 @@ app.delete(`/delete/:title`, (req,res) => {
     console.log(`this is path http://localhost:3000/delete`);
     console.log(req.params.title);
     // console.log(res.body);
-    // let sql = "DELETE FROM todo WHERE title=''";
-    // db.query(sql, post, (err,results) => {
-    //     if(err) throw err;
-    //     console.log();
-    // });
+    let sql = `DELETE FROM todo WHERE title='${req.params.title}'`;
+    db.query(sql, (err,results) => {
+        if(err) throw err;
+        console.log(results);
+    });
 })
 
 //listen

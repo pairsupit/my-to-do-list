@@ -56,15 +56,24 @@ li {
 .front-section {
     display: block;
     width: 75%;
-    background-color: brown;
+
 }
 
-.delete {
-    display: block;
+.back-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 25%;
-    background-color: burlywood;
-    text-align: center;
 }
+
+.front-section {
+    padding: 10px;
+}
+
+.front-section, .back-section {
+    background: rgba(255, 250, 250, 0.3);
+}
+
 
 form {
     background-color:cornflowerblue;
